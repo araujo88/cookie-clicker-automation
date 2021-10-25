@@ -2,10 +2,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import os, time
 
-PATH = os.environ.get('CHROMEDRIVER_PATH')
-driver = webdriver.Chrome(PATH)
+s = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=s)
 driver.get("https://orteil.dashnet.org/cookieclicker")
 
 driver.implicitly_wait(5)
